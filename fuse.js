@@ -9,4 +9,6 @@ const fuse = new FB.FuseBox({
   ]
 })
 
-fuse.bundle('>index.tsx')
+fuse.devServer('>index.tsx', {
+  port: 3000
+})

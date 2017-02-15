@@ -1,7 +1,6 @@
 const FB = require('fuse-box')
 
 const fuse = new FB.FuseBox({
-    cache: false,
     homeDir: 'source',
     outFile: 'build/app.js',
     globals: { inferno: "Inferno" },
@@ -17,4 +16,4 @@ fuse
           + inferno
         `
     })
-    .then(() => fuse.devServer(">[index.tsx]"));
+    .then(() => fuse.devServer(">[index.tsx]", { port: 3000 }));

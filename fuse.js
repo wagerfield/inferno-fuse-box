@@ -1,13 +1,20 @@
 const FB = require('fuse-box')
 
 const fuse = new FB.FuseBox({
-  cache: false,
-  homeDir: 'source',
-  outFile: 'build/bundle.js',
-  plugins: [
-    [ /\.tsx?$/, FB.BabelPlugin() ],
-    FB.UglifyJSPlugin()
-  ]
+    cache: false,
+    homeDir: 'source',
+    outFile: 'build/app.js',
+    globals: { inferno: "Inferno" },
+    plugins: [
+        [/\.tsx?$/, FB.BabelPlugin()],
+        //FB.UglifyJSPlugin()
+    ]
 })
 
-fuse.bundle('>index.tsx')
+fuse
+    .bundle({
+        "build/vendor.js": `
+          + inferno
+        `
+    })
+    .then(() => fuse.devServer(">[index.tsx]"));

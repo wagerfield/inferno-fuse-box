@@ -5,8 +5,7 @@ const fuse = new FB.FuseBox({
   homeDir: 'source',
   outFile: 'build/bundle.js',
   plugins: [
-    [ /\.tsx?$/, FB.BabelPlugin() ],
-    FB.UglifyJSPlugin()
+    [ /\.tsx?$/, FB.BabelPlugin() ]
   ]
 })
 

@@ -1,3 +1,4 @@
 import { render } from 'inferno'
+import Header from './header'
 
-render(<h1>Inferno</h1>, document.getElementById('root'))
+render(<Header text="Inferno"/>, document.getElementById('root'))

@@ -1,3 +1,3 @@
-import Inferno from 'inferno'
+import { render } from 'inferno'
 
-Inferno.render(<h1>Inferno</h1>, document.getElementById('root'))
+render(<h1>Inferno</h1>, document.getElementById('root'))

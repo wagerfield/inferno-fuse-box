@@ -1,7 +1,6 @@
 const FB = require('fuse-box')
 
 const fuse = new FB.FuseBox({
-  cache: false,
   homeDir: 'source',
   outFile: 'build/app.js',
   plugins: [

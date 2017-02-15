@@ -1,0 +1,13 @@
+{
+  "include": [
+    "source/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "target": "es6"
+  }
+}

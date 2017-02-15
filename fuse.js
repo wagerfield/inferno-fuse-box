@@ -6,9 +6,7 @@ const fuse = new FB.FuseBox({
   outFile: 'build/app.js',
   plugins: [
     [ /\.tsx?$/, FB.BabelPlugin() ],
-    FB.EnvPlugin({
-      NODE_ENV: 'production'
-    }),
+    FB.EnvPlugin({ NODE_ENV: 'production' }),
     FB.UglifyJSPlugin()
   ]
 })

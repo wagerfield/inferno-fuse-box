@@ -1,12 +1,6 @@
 {
   "sourceMaps": true,
-  "presets": [ 
-    [ "es2015", {
-        "modules": false,
-        "loose": true
-      }
-    ]
-  ],
+  "presets": [ "es2015" ],
   "plugins": [
     "syntax-jsx",
     [ "inferno", {

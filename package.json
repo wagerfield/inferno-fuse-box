@@ -1,12 +1,19 @@
 {
   "name": "inferno-fuse-box",
+  "description": "Inferno starter project using TypeScript and FuseBox",
   "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Matthew Wagerfield",
+    "email": "matthew@wagerfield.com"
+  },
   "scripts": {
     "start": "node fuse.js",
     "build": "node fuse.js -p"
   },
   "dependencies": {
-    "inferno": "^1.3.0-rc.3"
+    "inferno": "^1.3.0-rc.3",
+    "ramda": "^0.23.0"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
@@ -15,6 +22,7 @@
     "babel-preset-es2015": "^6.22.0",
     "fuse-box": "^1.3.115",
     "typescript": "^2.1.6",
-    "uglify-js": "^2.7.5"
+    "uglify-js": "^2.7.5",
+    "yargs": "^6.6.0"
   }
 }

@@ -1,4 +1,4 @@
-import { render } from 'inferno'
+import Inferno from 'inferno'
 import Header from './header'
 
-render(<Header text="Inferno"/>, document.getElementById('root'))
+Inferno.render(<Header text="Inferno"/>, document.getElementById('root'))

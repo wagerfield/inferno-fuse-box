@@ -1,24 +1,38 @@
-const FB = require('fuse-box')
+const { merge } = require('ramda')
+const argv = require('yargs').boolean('p').argv
+const fsbx = require('fuse-box')
 
-const fuse = new FB.FuseBox({
+const isProduction = argv.p
+
+const fuse = new fsbx.FuseBox({
+  cache: false,
   homeDir: 'source',
   outFile: 'build/app.js',
   plugins: [
-    [ /\.tsx?$/, FB.BabelPlugin() ],
-    FB.EnvPlugin({ NODE_ENV: 'production' }),
-    FB.UglifyJSPlugin()
+    [ /\.tsx?$/, fsbx.BabelPlugin() ],
+    // isProduction && fsbx.EnvPlugin({ NODE_ENV: 'production' }),
+    // isProduction && fsbx.UglifyJSPlugin()
   ]
 })
 
-fuse.bundle({
-  'build/vendor.js': '+ inferno',
-  'build/app.js': '> [index.tsx]'
-})
+const vendor = {
+  'build/vendor.js': [
+    '+ inferno',
+    '+ ramda'
+  ].join(' ')
+}
 
-// fuse.bundle({
-//   'build/vendor.js': '+ inferno',
-// }).then(() => {
-//   fuse.devServer('> [index.tsx]', {
-//     port: 3000
+// if (isProduction) {
+
+  fuse.bundle(merge({
+    'build/app.js': '> [index.tsx]'
+  }, vendor))
+
+// } else {
+
+//   fuse.bundle(vendor).then(() => {
+//     fuse.devServer('> [index.tsx]', {
+//       port: 3000
+//     })
 //   })
-// })
+// }

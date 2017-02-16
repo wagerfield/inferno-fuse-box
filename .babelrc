@@ -5,7 +5,7 @@
   "plugins": [
     [ "syntax-jsx" ],
     [ "inferno", {
-        "imports": true
+        "imports": false
       }
     ]
   ]

@@ -1,38 +1,48 @@
-const { merge } = require('ramda')
+const { join } = require('path')
 const argv = require('yargs').boolean('p').argv
 const fsbx = require('fuse-box')
+
+const buildDir = 'build'
+const sourceDir = 'source'
+
+const appBundle = join(buildDir, 'app.js')
+const lazyBundle = join(buildDir, 'lazy.js')
+const vendorBundle = join(buildDir, 'vendor.js')
+
+const appEntry = '> [index.tsx]'
+const lazyEntry = 'lazy.tsx'
 
 const isProduction = argv.p
 
 const fuse = new fsbx.FuseBox({
-  cache: false,
-  homeDir: 'source',
-  outFile: 'build/app.js',
+  homeDir: sourceDir,
+  outFile: appBundle,
   plugins: [
-    [ /\.tsx?$/, fsbx.BabelPlugin() ],
-    // isProduction && fsbx.EnvPlugin({ NODE_ENV: 'production' }),
-    // isProduction && fsbx.UglifyJSPlugin()
+    fsbx.BabelPlugin(),
+    isProduction && fsbx.EnvPlugin({ NODE_ENV: 'production' }),
+    isProduction && fsbx.UglifyJSPlugin()
   ]
 })
 
-const vendor = {
-  'build/vendor.js': [
+const bundles = {
+  [lazyBundle]: lazyEntry,
+  [vendorBundle]: [
     '+ inferno',
-    '+ ramda'
-  ].join(' ')
+    '+ inferno-component'
+  ].join(' '),
 }
 
-// if (isProduction) {
+if (isProduction) {
 
-  fuse.bundle(merge({
-    'build/app.js': '> [index.tsx]'
-  }, vendor))
+  fuse.bundle(Object.assign({
+    [appBundle]: appEntry
+  }, bundles))
 
-// } else {
+} else {
 
-//   fuse.bundle(vendor).then(() => {
-//     fuse.devServer('> [index.tsx]', {
-//       port: 3000
-//     })
-//   })
-// }
+  fuse.bundle(bundles).then(() => {
+    fuse.devServer(appEntry, {
+      port: 8000
+    })
+  })
+}

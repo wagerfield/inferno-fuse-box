@@ -1,4 +1,4 @@
-import Inferno from 'inferno'
-import Header from './header'
+import { render } from 'inferno'
+import App from './app'
 
-Inferno.render(<Header text="Inferno"/>, document.getElementById('root'))
+render(<App/>, document.getElementById('root'))

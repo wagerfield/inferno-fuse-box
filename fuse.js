@@ -1,13 +1,13 @@
-const FB = require('fuse-box')
+const { FuseBox, EnvPlugin, BabelPlugin } = require('fuse-box')
 
-const bundler = new FB.FuseBox({
+const bundler = new FuseBox({
   homeDir: 'source',
   outFile: 'build/bundle.js',
   sourcemaps: true,
   plugins: [
-    FB.BabelPlugin(),
-    FB.EnvPlugin({ NODE_ENV: 'production' }),
-    // FB.UglifyJSPlugin()
+    BabelPlugin(),
+    EnvPlugin({ NODE_ENV: 'production' }),
+    // UglifyJSPlugin()
   ]
 })
 

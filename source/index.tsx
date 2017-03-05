@@ -1,4 +1,3 @@
-import { render } from 'inferno'
-import App from './app'
+import * as Inferno from 'inferno'
 
-render(<App/>, document.getElementById('root'))
+Inferno.render(<h1>Inferno ❤️ FuseBox</h1>, document.getElementById('root'))

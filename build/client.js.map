@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.tsx"],"names":[],"mappings":";;;;;;;AAAA,iCAAkC;AAElC,OAAO,CAAC,MAAM,CAAC,CAAC,EAAE,CAAC,kBAAkB,EAAE,EAAE,CAAC,EAAE,QAAQ,CAAC,cAAc,CAAC,MAAM,CAAC,CAAC,CAAA","file":"","sourcesContent":["import * as Inferno from 'inferno'\n\nInferno.render(<h1>Inferno ❤️ FuseBox</h1>, document.getElementById('root'))\n"]}

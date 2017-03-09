@@ -1,22 +1,11 @@
 {
-  "include": [
-    "source/**/*"
-  ],
-  "compilerOptions": {
+	"compilerOptions": {
     "moduleResolution": "node",
-    "target": "es5",
-    "jsx": "preserve",
-    "alwaysStrict": true,
-    "importHelpers": true,
-    "strictNullChecks": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitUseStrict": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "noUnusedParameters": true,
-    "noUnusedLocals": true
-  }
+		"target": "es5",
+		"jsx": "preserve",
+    "noImplicitAny": true
+	},
+	"include": [
+		"source/**/*"
+	]
 }

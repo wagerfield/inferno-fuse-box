@@ -1,17 +1,24 @@
-const { FuseBox, EnvPlugin, BabelPlugin } = require('fuse-box')
+const {
+  FuseBox,
+  BabelPlugin,
+  ReplacePlugin,
+  UglifyJSPlugin
+} = require('fuse-box')
 
 const bundler = new FuseBox({
   homeDir: 'source',
   outFile: 'build/bundle.js',
-  sourcemaps: true,
   plugins: [
     BabelPlugin(),
-    EnvPlugin({ NODE_ENV: 'production' }),
+    ReplacePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
     // UglifyJSPlugin()
   ]
 })
 
 bundler.bundle({
-  'build/client.js': '!> [index.tsx]',
-  'build/vendor.js': '~ index.tsx'
+  'build/server.js': '!> [server.tsx]',
+  'build/client.js': '!> [client.tsx]',
+  'build/vendor.js': '~ client.tsx'
 })

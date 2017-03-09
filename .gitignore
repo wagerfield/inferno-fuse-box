@@ -1,4 +1,7 @@
+# Folders
+node_modules/
+.fusebox/
+.vscode/
+
+# Files
 .DS_Store
-.fusebox
-.vscode
-node_modules

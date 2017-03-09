@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "adjacent-overload-signatures": true,
+    "no-any": true,
+    "semicolon": [true, "always"]
+  }
+}
